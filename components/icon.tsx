@@ -1,8 +1,8 @@
 export const ArrowRight = () => (
   <svg
     className="arrow-left-19px_svg__svgIcon-use"
-    width="24px"
-    height="24px"
+    width="26px"
+    height="26px"
     viewBox="0 0 19 19"
     aria-hidden="true"
     style={{ transform: "rotate(180deg)" }}
@@ -17,8 +17,8 @@ export const ArrowRight = () => (
 export const ArrowLeft = () => (
   <svg
     className="arrow-left-19px_svg__svgIcon-use"
-    width="24px"
-    height="24px"
+    width="26px"
+    height="26px"
     viewBox="0 0 19 19"
     aria-hidden="true"
   >
