@@ -1,15 +1,13 @@
 import { Tab } from "@headlessui/react";
 import axios from "axios";
 import { useRouter } from "next/router";
-import React, { Fragment, useCallback, useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import useSWR from "swr";
 import { config, fetcher } from "../Api";
 import { WriterInfo } from "../WriterInfo";
 import { ArrowLeft, ArrowRight } from "../icon";
-import Layout from "../Layout";
 import PostsList from "../posts/Listofposts";
 import { Space } from "../share/Space";
-import { ThemedText } from "../ThemedText";
 import {
   adminProp,
   CateProp,
@@ -18,7 +16,6 @@ import {
   PostProp,
 } from "./Cate.interface";
 import { Header } from "../Header";
-import Carousl from "../carousl";
 
 interface CatProp {
   name: string;
@@ -172,8 +169,6 @@ export default function CategoryList(): JSX.Element {
               </Fragment>
             );
           })}
-
-        {/* <Carousl data={data} /> */}
       </div>
     </div>
   );

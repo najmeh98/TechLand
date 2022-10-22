@@ -1,6 +1,3 @@
-import { useState } from "react";
-import { Note } from "./share/Note";
-
 interface HeaderProp {
   name: string;
   family: string;

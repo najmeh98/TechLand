@@ -1,4 +1,4 @@
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 import useSWR from "swr";
 import { config, fetcher } from "../../components/Api";
