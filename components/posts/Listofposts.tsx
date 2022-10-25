@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useState } from "react";
+import { SpinnerIcon } from "../category/SpinnerComponent";
 import { ThemedText } from "../ThemedText";
 import { OwnProp } from "./posts.interface";
 
@@ -11,14 +12,12 @@ export default function PostsList({
   category,
   image,
 }: OwnProp): JSX.Element {
-  const { query } = useRouter();
-
   return (
     <div
       className="flex w-full items-start pt-3   rounded  justify-between   "
       onClick={onClick}
     >
-      <div className="flex flex-col items-start !justify-between h-full w-full ">
+      <div className="flex flex-col items-start !justify-between h-full w-full mr-16 ">
         <h2 className=" m-0  leading-8	whitespace-normal pb-2 w-full  font-bold">
           {title}
         </h2>
@@ -39,25 +38,30 @@ export default function PostsList({
         </div>
       </div>
 
-      <div className="ml-16 bg-cover">
-        {image == null ? (
-          <img
-            src="/noimage.jpeg"
-            width={200}
-            height={150}
-            alt={title}
-            className="rounded-md shadow-xl bg-cover"
-          />
-        ) : (
-          <img
-            src={image}
-            alt={title}
-            width={160}
-            height={160}
-            className="rounded-md shadow-xl bg-cover"
-          />
-        )}
-      </div>
+      {/* <div className="ml-16 bg-cover w-[173px] h-[153px] "> */}
+      {image == undefined || image == null ? (
+        <>
+          <div className=" w-[160px] h-[160px] rounded-md  bg-slate-300 border-solid animate-pulse border-gray-300  bg-cover hover:shadow-[0_8px_30px_#7c7b7b1e]">
+            <SpinnerIcon />
+          </div>
+        </>
+      ) : (
+        // <img
+        //   src="/noimage.jpeg"
+        //   width={200}
+        //   height={150}
+        //   alt={title}
+        //   className="rounded-md shadow-xl bg-cover"
+        // />
+        <img
+          src={image}
+          alt="..."
+          width={160}
+          height={160}
+          className="rounded-md shadow-xl bg-cover"
+        />
+      )}
+      {/* </div> */}
 
       {/* <hr className=" h-1 text-slate-400" /> */}
     </div>
