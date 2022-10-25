@@ -1,21 +1,14 @@
-import { Tab } from "@headlessui/react";
 import axios from "axios";
 import { useRouter } from "next/router";
 import React, { Fragment, useEffect, useState } from "react";
 import useSWR from "swr";
 import { config, fetcher } from "../Api";
 import { WriterInfo } from "../WriterInfo";
-import { ArrowLeft, ArrowRight } from "../icon";
 import PostsList from "../posts/Listofposts";
 import { Space } from "../share/Space";
-import {
-  adminProp,
-  CateProp,
-  dataProp,
-  ItemProp,
-  PostProp,
-} from "./Cate.interface";
+import { adminProp, dataProp, PostProp } from "./Cate.interface";
 import { Header } from "../Header";
+import { SpinnerComponent } from "./SpinnerComponent";
 
 interface CatProp {
   name: string;
@@ -28,8 +21,6 @@ export default function CategoryList(): JSX.Element {
     `${config.apiUrl}/api/data/getAllCategories`,
     fetcher
   );
-
-  console.log(data);
 
   const router = useRouter();
 
@@ -102,14 +93,17 @@ export default function CategoryList(): JSX.Element {
   return (
     <div
       style={style}
-      className="w-[60rem]  min-h-screen flex flex-col border border-r border-l border-slate-300 mx-auto  whitespace-normal leading-8 "
+      className="w-[60rem] container   min-h-screen flex flex-col border border-r border-l border-slate-300 mx-auto  whitespace-normal leading-8 "
     >
       <div className="w-[45rem] flex flex-col  items-start justify-center mx-auto  ">
-        <Space vertical={80} />
+        <Space vertical={87} />
 
         <Header data={data} setSaveId={setSaveId} />
 
-        {postInfo &&
+        {postInfo == undefined ? (
+          <SpinnerComponent />
+        ) : (
+          postInfo &&
           postInfo.length > 0 &&
           postInfo.map((posts: PostProp) => {
             const adminInfo: adminProp = posts.admin;
@@ -127,7 +121,7 @@ export default function CategoryList(): JSX.Element {
 
             return (
               <Fragment key={posts?.id}>
-                <div className="flex flex-col w-full items-start justify-start pt-6 cursor-pointer">
+                <div className=" flex flex-col w-full items-start justify-start pt-6 cursor-pointer">
                   {/* show profile writer */}
                   <WriterInfo
                     postdate={postdate}
@@ -168,7 +162,8 @@ export default function CategoryList(): JSX.Element {
                 <hr className=" m-0  w-full border-gray-200 border-t-0 border-solid" />
               </Fragment>
             );
-          })}
+          })
+        )}
       </div>
     </div>
   );
