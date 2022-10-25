@@ -23,7 +23,7 @@ export const WriterInfo = ({
 }: HeaderProp) => {
   return (
     <div
-      className={`flex items-center cursor-pointer relative w-full ${className}`}
+      className={`flex container items-center cursor-pointer relative  ${className}`}
       onClick={onClick}
     >
       <img
