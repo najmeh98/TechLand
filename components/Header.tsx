@@ -75,7 +75,7 @@ export const CategoryItem = ({ onClick, name, isActive }: ItemProp) => {
       onClick={onClick}
       className={` text-base   leading-5 capitalize flex justify-center  cursor-pointer  group  items-center  py-4  mx-6 whitespace-nowrap ${
         isActive
-          ? "border-indigo-500  border-solid    border-b-2 text-indigo-600 focus:outline-none focus:text-indigo-800  focus:border-b  focus:border-indigo-700"
+          ? " text-indigo-600 focus:outline-none focus:text-indigo-800   focus:border-b-indigo-700"
           : "border-transparent text-gray-500 hover:text-gray-600 hover:border-gray-300 focus:text-gray-600 focus:border-gray-300"
       } `}
     >
